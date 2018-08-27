@@ -47,7 +47,7 @@
       series: [{
           type: 'pie',
           name: 'Product Share',
-          data: <%= raw @products_map %>
+          data: <%= @products_map.to_json.html_safe %>
       }]
     });
 
