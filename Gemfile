@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Devin added this because json 1.7.3 failed
+gem 'json', '1.8.2'
+
+# Devin added this because 'rails console' failed
+gem 'test-unit'
+
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
