@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
 
 	def index
 		@products = Product.includes(:user).all
+		@sum_price = Product.sum(:price).to_f
+		@products_map = @products.map do |product|
+			[product.name, product.price/@sum_price]
+		end
 	end
 
 	def create
