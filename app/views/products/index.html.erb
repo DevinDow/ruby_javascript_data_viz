@@ -55,7 +55,11 @@
 				dataType: 'json',
 				data: { product: {price: newPrice} }
 		}).success(function(data, textStatus, jqXHR) { 
-			console.log('done');
+			console.log(data);
+			console.log('id is:' + data.id);
+			console.log('price is:' + data.price);
+			$('[data-product='+ data.id +']').html("$" + data.price);
+			$('[data-incr-price='+ data.id +']').attr('data-price', data.price);
 		})
 	})
 </script>
