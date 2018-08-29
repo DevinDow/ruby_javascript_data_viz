@@ -42,7 +42,8 @@
 
 		url = $(this).attr('href')  // $(this) is the link (<a>) that was clicked, 'href' is the attribute of <a>
 		console.log(url);
-		})
+		$.ajax({url: url, type: 'put', dataType: 'json'})
+	})
 </script>
 
 <script type='text/javascript'>
