@@ -25,13 +25,23 @@
 			<tr>
 				<td><%= product.id %></td>
 				<td><%= product.name %></td>
-				<td>$<%= product.price %></td>
+				<td data-product='<%= product.id %>'>$<%= product.price %></td>
 				<td><%= product.user.name if product.user.present? %></td>
-				<td><%= link_to "+", product_path(product, :product => {:price => product.price + 1}), :method => :put %></td>
+				<td><%= link_to "+", product_path(product), 
+						'data-incr-price' => product.id, 
+						:method           => :put %></td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
+
+<script type='text/javascript'>
+	$('[data-incr-price]').on('click', function(e){
+		e.preventDefault();
+		e.stopPropagation();
+		console.log('clicked');
+		})
+</script>
 
 <script type='text/javascript'>
 
