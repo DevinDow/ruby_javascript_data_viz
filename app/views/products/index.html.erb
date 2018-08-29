@@ -39,7 +39,9 @@
 	$('[data-incr-price]').on('click', function(e){
 		e.preventDefault();
 		e.stopPropagation();
-		console.log('clicked');
+
+		url = $(this).attr('href')
+		console.log(url);
 		})
 </script>
 
