@@ -47,12 +47,16 @@
 		console.log('price=' + price);
 		newPrice = parseInt(price) + 1;
 		console.log('newPrice=' + newPrice);
+
+		console.log(location.protocol + "//" + location.host + url);
 		$.ajax({
 				url: url, 
-				type: 'put', 
+				type: 'put',
 				dataType: 'json',
 				data: { product: {price: newPrice} }
-			})
+		}).success(function(data, textStatus, jqXHR) { 
+			console.log('done');
+		})
 	})
 </script>
 
