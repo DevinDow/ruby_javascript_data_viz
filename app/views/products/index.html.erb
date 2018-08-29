@@ -36,11 +36,11 @@
 </table>
 
 <script type='text/javascript'>
-	$('[data-incr-price]').on('click', function(e){
+	$('[data-incr-price]').on('click', function(e){  // $('[data-incr-price]') is all of the link_to("+") ekements
 		e.preventDefault();
 		e.stopPropagation();
 
-		url = $(this).attr('href')
+		url = $(this).attr('href')  // $(this) is the link (<a>) that was clicked, 'href' is the attribute of <a>
 		console.log(url);
 		})
 </script>
