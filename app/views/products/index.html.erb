@@ -3,7 +3,7 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <script type='text/javascript'>
-  console.log('the number of products is ' + '<%= @products.count %>');
+	console.log('the number of products is ' + '<%= @products.count %>');
 </script>
 
 <h2> Products in the market </h2>
@@ -13,57 +13,57 @@
 <div id="highChartContainer" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 <table>
-  <tbody>
-    <tr>
-      <th>ID</th>
-      <th>Item</th>
-      <th>Cost</th>
-      <th>Seller</th>
-    </tr>
+	<tbody>
+		<tr>
+			<th>ID</th>
+			<th>Item</th>
+			<th>Cost</th>
+			<th>Seller</th>
+		</tr>
 
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.id %></td>
-      	<td><%= product.name %></td>
-      	<td>$<%= product.price %></td>
-      	<td><%= product.user.name if product.user.present? %></td>
-      </tr>
-    <% end %>
-  </tbody>
+		<% @products.each do |product| %>
+			<tr>
+				<td><%= product.id %></td>
+				<td><%= product.name %></td>
+				<td>$<%= product.price %></td>
+				<td><%= product.user.name if product.user.present? %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <script type='text/javascript'>
 
-  $('[data-hide-element=chart]').on('click', function(){
-      $('#highChartContainer').toggle()
-    });
+	$('[data-hide-element=chart]').on('click', function(){
+			$('#highChartContainer').toggle()
+		});
 
-  $(document).ready(function(){
-    console.log('start');
-    
-    chart = new Highcharts.Chart({
-      chart: {
-          renderTo: 'highChartContainer',
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
-          plotShadow: false
-      },
-      title: {
-          text: 'Browser market shares at a specific website, 2010'
-      },
-      series: [{
-          type: 'pie',
-          name: 'Product Share',
-          data: <%= @products_map.to_json.html_safe %>
-      }]
-    });
+	$(document).ready(function(){
+		console.log('start');
+		
+		chart = new Highcharts.Chart({
+			chart: {
+					renderTo: 'highChartContainer',
+					plotBackgroundColor: null,
+					plotBorderWidth: null,
+					plotShadow: false
+			},
+			title: {
+					text: 'Browser market shares at a specific website, 2010'
+			},
+			series: [{
+					type: 'pie',
+					name: 'Product Share',
+					data: <%= @products_map.to_json.html_safe %>
+			}]
+		});
 
-    console.log(chart);
+		console.log(chart);
 });
 </script>
 
 <%=
-    @products.map do |product|
-      [product.name, product.price/@sum_price]
-    end
+		@products.map do |product|
+			[product.name, product.price/@sum_price]
+		end
 %>
